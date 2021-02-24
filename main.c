@@ -4,9 +4,13 @@
 #include "./funcoes/func.h"
 
 void main () {
-    int n = 0; //representa o número de jogadores
-    char jogadores[10][12];
-    int ordemJogador = 0; // usado para ordenar o nome dos jogadores
+    int n, ordemJogador = 0; 
+    struct jogadores {  
+        char nome[12];
+        int pontos;
+    };
+    struct jogadores jogadores[10];
+    
     printf("*** JOGO ADEDONHA *** \n");
     printf("O número minimo de jogadores é 2 e o maximo é 10 \n");
     while( n > 10 || n < 2 ) {
@@ -18,9 +22,8 @@ void main () {
         // int numerosJogadores = (int)strlen(jogadores[ordemJogador]);
         // while(numerosJogadores > 0 & numerosJogadores < 13) {
             printf("digite o nome do %d jogador: ", ordemJogador + 1);
-            scanf("%s",jogadores[ordemJogador]);
+            scanf("%s",jogadores[ordemJogador].nome);
         //}
         ordemJogador ++;
     }
-    teste();
 }

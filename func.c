@@ -3,7 +3,10 @@
 #include <string.h>
 #include "./func.h"
 
-void main () {
+int main (int nargs, char*argv[]) {
+    char letras_usadas[23];
+    int i = 1, j = 3;
+    char indice_letras; // iterar sobre a lista de usadas
     int n = 0; //representa o número de jogadores
     char jogadores[10][12];
     int ordemJogador = 0; // usado para ordenar o nome dos jogadores
@@ -22,6 +25,6 @@ void main () {
         //}
         ordemJogador ++;
     }
-
-    sortear_letra();
+    
+    
 }

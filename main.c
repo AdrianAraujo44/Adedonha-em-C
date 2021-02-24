@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "./func.h"
+#include "./funcoes/func.h"
 
 void main () {
     int n = 0; //representa o número de jogadores
@@ -22,4 +22,5 @@ void main () {
         //}
         ordemJogador ++;
     }
+    teste();
 }

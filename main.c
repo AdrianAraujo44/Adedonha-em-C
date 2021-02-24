@@ -22,6 +22,4 @@ void main () {
         //}
         ordemJogador ++;
     }
-
-    sortear_letra();
 }

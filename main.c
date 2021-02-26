@@ -3,12 +3,14 @@
 #include <string.h>
 #include "./funcoes/func.h"
 
+struct categoria {
+    char nome[30];
+    int chave;
+};
+
 void main () {
+    int rodadas = 5;
     int n, ordemJogador = 0; 
-    struct jogadores {  
-        char nome[12];
-        int pontos;
-    };
     struct jogadores jogadores[10];
     
     printf("*** JOGO ADEDONHA *** \n");
@@ -25,5 +27,16 @@ void main () {
             scanf("%s",jogadores[ordemJogador].nome);
         //}
         ordemJogador ++;
+    }
+
+    int cont = 0 ;
+    int *ordem[3];
+    struct categoria result;
+    result.chave = 1;
+    while(cont < rodadas) {
+        result = categorias(result.chave);
+        printf("A categoria desta rodada é: %s \n",result.nome);
+        *ordem = sortearOrdemJogador(jogadores,n);
+        cont ++;
     }
 }

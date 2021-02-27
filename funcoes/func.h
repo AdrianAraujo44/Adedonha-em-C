@@ -8,6 +8,7 @@ struct jogadores {
 
 
 struct categoria categorias(int passada);
-int * sortearOrdemJogador(struct jogadores jogador[] ,int n);
+int *  sortearOrdemJogador(struct jogadores jogador[] ,int n, int *ordemAnterior);
+int *criar_vetor(int n);
 
 #endif

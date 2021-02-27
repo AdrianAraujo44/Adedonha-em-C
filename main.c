@@ -30,13 +30,21 @@ void main () {
     }
 
     int cont = 0 ;
-    int *ordem[3];
+    int *ordem;
+    ordem = criar_vetor(n);
+    for(int i =0; i<n ; i++) {
+        ordem[i] = i;
+        //printf("ordem i %d \n",i);
+    }
     struct categoria result;
     result.chave = 1;
     while(cont < rodadas) {
         result = categorias(result.chave);
+        printf("\n");
+        printf("------------------------------------\n");
         printf("A categoria desta rodada é: %s \n",result.nome);
-        *ordem = sortearOrdemJogador(jogadores,n);
+        ordem = sortearOrdemJogador(jogadores,n,ordem); 
+        printf("------------------------------------\n");
         cont ++;
     }
 }

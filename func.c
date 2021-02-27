@@ -35,32 +35,65 @@ struct categoria categorias(int passada) {
     return categoriaAtual;
 }
 
-int * sortearOrdemJogador(struct jogadores jogador[], int n) {
+int *criar_vetor(int tamanho) { 
+   (int *) malloc(tamanho*sizeof(int));
+}
+
+int *  sortearOrdemJogador(struct jogadores jogador[], int n, int *ordemAnterior) {
     int * array = (int *) calloc (n, sizeof (int));
-    int result = 0;
-    int cont = 0;
+    int i = 0;
+    int condicao = 0;
     int sorteado;
-    srand( (unsigned)time(NULL) );
-    printf("A ordem desta jogada será: \n");
-    while(cont < n) {
-        sorteado = rand() % 3;
-        for(int i = 0; i < n ; i++) {
-            if(array[i] == sorteado) {
-                result = 1;
-                printf(" %d. %s \n",cont + 1 , jogador[cont].nome);
+
+    for(int c = 0; c<n ; c++) {
+        array[c] = ordemAnterior[c];
+    }
+    //srand( (unsigned)time(NULL) );
+    while(i<n) {
+		sorteado = rand() % n;
+		int temp = array[i];
+		array[i] = array[sorteado];
+		array[sorteado] = temp;
+        for(int c = 0; c< n; c++) {
+            if(array[c] == ordemAnterior[c]){
+                condicao ++;
             }
         }
-        if(result) {
-            array[cont] = sorteado;
-        }
-        cont ++;
+        if(condicao != n) 
+            i++;
 
-        // if(array[0] != sorteado & array[1] != sorteado & array[2] != sorteado) {
-        //     array[cont] = sorteado;
-        //     printf(" %d. %s \n",cont + 1 , jogador[cont].nome);
-        // }
-        //  cont ++;
+        condicao = 0;
+	}
+    for(int b = 0; b<n ;b++) {
+        printf("%d. %s\n",b+1,jogador[array[b]].nome);
     }
-    printf("---------------------------------------- \n");
     return array;
+     
+
+    // while(cont < n ) {
+    //     sorteado = rand() % n; 
+    //     i = 0;
+    //     while(i < n) {
+    //         if(ordemAnterior[i] == sorteado & array[i] == sorteado) {
+    //             result = 1;
+    //             //break;
+    //         }
+    //         // if(ordemAnterior[i] != sorteado) {
+    //         //     result = 0; 
+    //         // }else{
+    //         //     result = 1;
+    //         //    // break;
+    //         // }
+    //         i++;
+    //     }
+    //     if(result == 0) {
+    //         printf(" numero sorteado unico %d\n",sorteado);
+    //         array[cont] = sorteado;
+    //         ordemAnterior[cont] = sorteado;
+    //         cont ++;
+    //     }
+    //     result = 0;
+        
+    // }
+   
 }

@@ -1,6 +1,16 @@
-#ifndef FUNCOES
-#define FUNCOES
+#ifndef func_h  
+#define func_h
 
-char sortear_letra ();
+#include <stdio.h>
+#include <stdlib.h>  
+#include <time.h>
+#include <math.h>
+#include <stdbool.h>
 
-#endif
+char sortear_letra();
+
+char pedir_enter();
+
+void limpar_tela();
+
+#endif 

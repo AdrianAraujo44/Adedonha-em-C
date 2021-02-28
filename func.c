@@ -68,32 +68,5 @@ int *  sortearOrdemJogador(struct jogadores jogador[], int n, int *ordemAnterior
         printf("%d. %s\n",b+1,jogador[array[b]].nome);
     }
     return array;
-     
-
-    // while(cont < n ) {
-    //     sorteado = rand() % n; 
-    //     i = 0;
-    //     while(i < n) {
-    //         if(ordemAnterior[i] == sorteado & array[i] == sorteado) {
-    //             result = 1;
-    //             //break;
-    //         }
-    //         // if(ordemAnterior[i] != sorteado) {
-    //         //     result = 0; 
-    //         // }else{
-    //         //     result = 1;
-    //         //    // break;
-    //         // }
-    //         i++;
-    //     }
-    //     if(result == 0) {
-    //         printf(" numero sorteado unico %d\n",sorteado);
-    //         array[cont] = sorteado;
-    //         ordemAnterior[cont] = sorteado;
-    //         cont ++;
-    //     }
-    //     result = 0;
-        
-    // }
    
 }

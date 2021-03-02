@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
+#include <ctype.h>
 
 // Estruturas 
 struct categoria {
@@ -69,4 +70,61 @@ int *  sortearOrdemJogador(struct jogadores jogador[], int n, int *ordemAnterior
     }
     return array;
    
+}
+
+void respoder(struct jogadores jogador[],int *ordem, char letra, int n, char categoria[30]) {
+    int c = 0;
+    int segundos = (8 + 2 * n);
+    char respostaJogador[250];
+    char **todasRespostas;
+    
+    todasRespostas = (char **) malloc(n * sizeof(char *));
+    for (int i =0; i< n ; i++) {
+       todasRespostas[i] = (char *) malloc(30*sizeof(char));
+    }
+
+    int tempo = 0;
+    int condicao = 0;
+    int rodou = 0 ;
+    time_t Ticks[2];
+    while(c < n) {
+        if(rodou == 0) {
+            Ticks[0] = time(NULL);
+        }
+        printf("%s, você deve entrar um '%s' com a letra '%c' em %d segundos:\n", jogador[ordem[c]].nome,categoria,letra,segundos);
+        scanf(" %s", respostaJogador);
+
+        for(int i=0; i<strlen(respostaJogador); i++) {
+            respostaJogador[i] = toupper (respostaJogador[i]); 
+        }
+
+        if( strlen(respostaJogador) <= 30) {
+            if(respostaJogador[0] != letra){
+                condicao = 1;
+                rodou = 1;
+            }
+            if(condicao == 0) {
+                Ticks[1] = time(NULL);
+                tempo = tempo + difftime(Ticks[1], Ticks[0]);
+                if(tempo <= segundos) {
+                    printf("tempo: %d \n",tempo);
+                    jogador[ordem[c]].tempo = tempo;
+                    strcpy(todasRespostas[c],respostaJogador);
+                }else {
+                    printf("Passou do tempo %d \n",tempo);
+                    strcpy(todasRespostas[c]," ");
+                }
+                c++;
+                rodou = 0;
+                segundos = segundos - 2;
+                tempo = 0;
+            }
+            condicao = 0;
+        }else{
+            rodou = 1;
+        }
+    }
+    for(int i = 0; i < n ; i++) {
+        printf("respostas %s \n", todasRespostas[i]);
+    }// aqui vem uma função para pontuar os jogadores
 }

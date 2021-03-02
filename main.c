@@ -42,8 +42,10 @@ void main () {
         printf("\n");
         printf("--------------------------------------------\n");
         printf("A categoria desta rodada é: %s \n",result.nome);
+        printf("A ordem desta jogada será: \n");
         ordem = sortearOrdemJogador(jogadores,n,ordem); 
         printf("--------------------------------------------\n");
+        respoder(jogadores,ordem,'A',n,result.nome);
         cont ++;
     }
 }

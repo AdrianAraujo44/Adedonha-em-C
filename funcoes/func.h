@@ -5,12 +5,15 @@
 #include <stdlib.h>  
 #include <time.h>
 #include <math.h>
-#include <stdbool.h>
+#include <string.h>
 
 char sortear_letra();
 
 char pedir_enter();
 
 void limpar_tela();
+
+char **criaVetorString(int n);
+
 
 #endif 

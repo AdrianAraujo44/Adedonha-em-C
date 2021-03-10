@@ -9,6 +9,8 @@
 
 char sortear_letra();
 
+int pedir_enter();
+
 char **criaVetorString(int n);
 
 

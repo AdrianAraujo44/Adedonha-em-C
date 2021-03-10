@@ -9,7 +9,6 @@ int main (int nargs, char *argv[]) {
   bool b;
   char aux;
   int indice = 0;
-  int i = 0;
 
   // int n; //representa o número de jogadores
   // char jogadores[10][12];

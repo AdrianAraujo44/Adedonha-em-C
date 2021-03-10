@@ -9,20 +9,6 @@ char sortear_letra () {
   return letras[random];
 };
 
-char pedir_enter() {
-  char enter;
-
-  printf("Digite [ Enter ] para iniciar a rodada: ");
-  scanf("%c", &enter);
-
-  return enter;
-}
-
-void limpar_tela() {
-  system("clear"); // linux
-  system("cls"); // windows
-}
-
 char **criaVetorString(int n){
   char **letras_usadas;
     

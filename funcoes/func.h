@@ -21,5 +21,10 @@ void pontuarJogadores(struct jogadores jogador[], char **todasRespostas, int n, 
 
 char ** criaVetorString(int n);
 void mostrarTabela(struct jogadores jogador[], int n, int rodada, char **titulosColunas);
+char sortear_letra();
 
+int pedir_enter();
+
+char **criaVetorStringLetras(int n); 
+struct jogadores vencedor(struct jogadores jogador[], int n);
 #endif

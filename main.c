@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <time.h> 
 #include "./funcoes/func.h"
 
 struct categoria {
@@ -12,9 +14,14 @@ int main () {
     int rodadas = 5;
     int n, ordemJogador = 0; 
     struct jogadores jogadores[10];
+    struct jogadores winner;
     char **respostas;
     char **titulosColunas;
     char **categ = criaVetorString(5);
+    char **letra = criaVetorStringLetras(10);
+    bool b;
+    char aux;
+    int indice = 0;
 
     categ[0] = "Nome de pessoas";
     categ[1] = "Nome de cidades";
@@ -34,8 +41,6 @@ int main () {
     }
 
     while(ordemJogador < n || caracteres > 12 ) {
-        // int numerosJogadores = (int)strlen(jogadores[ordemJogador]);
-        // while(numerosJogadores > 0 & numerosJogadores < 13) {
           do{
             printf("digite o nome do %d jogador: ", ordemJogador + 1);
             scanf("%s",jogadores[ordemJogador].nome);
@@ -58,6 +63,19 @@ int main () {
     result.chave = 1;
 
     while(cont < rodadas) {
+        srand(time(NULL));
+        do {
+          aux = sortear_letra();
+          b = false;
+          for (int j = 0; j < indice; j++) {
+            if (aux == *letra[j]) {
+              b = true;
+            }
+          }
+        } while (b == true);
+        *letra[indice] = aux;
+        indice++;
+        printf("\n\nA letra da rodada é %c \n",aux);
         result = categorias(result.chave);
         titulosColunas[cont] = categ[result.chave];
         printf("\n");
@@ -66,11 +84,15 @@ int main () {
         printf("A ordem desta jogada será: \n");
         ordem = sortearOrdemJogador(jogadores, n, ordem); 
         printf("--------------------------------------------\n");
-        respoder(jogadores, ordem ,'A', n, result.nome, respostas);
+        pedir_enter();
+        printf("\33[H\33[2J");
+        respoder(jogadores, ordem ,aux, n, result.nome, respostas);
         pontuarJogadores(jogadores, respostas, n, cont);
         mostrarTabela(jogadores, n, cont, titulosColunas);
         cont ++;
     }
+    winner = vencedor(jogadores, n);
+    printf("\n\nGanhador: %s\n", winner.nome);
 
 return 0;
 }
